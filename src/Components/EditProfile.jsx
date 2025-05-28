@@ -10,12 +10,12 @@ const EditProfile = ({ user }) => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
-  const [age, setAge] = useState(user.age);
-  const [about, setAbout] = useState(user.about);
-  const [gender, setGender] = useState(user.gender);
+  const [firstName, setFirstName] = useState(user.firstName || "");
+  const [lastName, setLastName] = useState(user.lastName || "");
+  const [photoUrl, setPhotoUrl] = useState(user.photoUrl || null);
+  const [age, setAge] = useState(user.age || null);
+  const [about, setAbout] = useState(user.about || "");
+  const [gender, setGender] = useState(user.gender || "");
   const [showToast, setShowToast] = useState(false);
 
   const saveProfile = async () => {
