@@ -15,3 +15,12 @@
     Route = /login ==> Login
     Route = /connections ==> Connections
     Route = /profile ==> profle
+
+- Login feature
+- Logout feature
+- Profile section 
+- Edit Profile 
+- Added Toast message
+- All the connections are shown
+- All request are show , accept or reject them
+
