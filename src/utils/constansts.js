@@ -1,1 +1,1 @@
-export const BASE_URL = "http://13.51.204.148:3000"
+export const BASE_URL = "/api/"
