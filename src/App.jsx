@@ -10,6 +10,9 @@ import appStore from "./utils/appStore";
 import Feed from "./Components/Feed";
 import Connections from "./Components/Connections";
 import Requests from "./Components/Requests"
+import PrivacyPolicy from "./Components/PrivacyPolicy";
+import TC from "./Components/TC";
+import RefundPolicy from "./Components/RefundPolicy";
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
             <Route path="/feed" element={<Feed />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/requests" element={<Requests />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<TC />} />
+          <Route path="refund-policy" element={<RefundPolicy />} />
           </Route>
         </Routes>
       </BrowserRouter>
