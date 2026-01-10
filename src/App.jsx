@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
@@ -13,6 +13,7 @@ import Requests from "./Components/Requests"
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import TC from "./Components/TC";
 import RefundPolicy from "./Components/RefundPolicy";
+import Premium from "./Components/Premium";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="terms" element={<TC />} />
           <Route path="refund-policy" element={<RefundPolicy />} />
+          <Route path="/premium" element={<Premium />} />
           </Route>
         </Routes>
       </BrowserRouter>

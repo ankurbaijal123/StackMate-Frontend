@@ -27,7 +27,7 @@ const Connections = () => {
   return (
     <div className="flex flex-col items-center my-10">
       <h1 className="text-2xl font-bold text-primary mb-6">Connections</h1>
-      {connections.map((connection, index) => {
+      {connections.map((connection) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } = connection;
         return (
           <div
