@@ -1,7 +1,15 @@
 import React from 'react'
 import axios from "axios"
+import { useState } from 'react';
 import { BASE_URL } from "../utils/constansts";
 function Premium() {
+  const [isPremium, setIsPremium] = useState(false)
+  const verifyPremiumUser = async () => {
+    const res = await axios.get(BASE_URL + "payment/verify", {withCredentials: true})
+    if(res.data.isPremium === true){
+      setIsPremium(true)
+    }
+  }
   const handlePremiumClick = async (premiumType) => {
     const res = await axios.post(BASE_URL + "/payment/create", {
       type: premiumType
@@ -22,15 +30,16 @@ function Premium() {
         theme: {
           color: '#F37254'
         },
+        handler: verifyPremiumUser()
       };
-      console.log(options)
+      
 
     const rzp = new window.Razorpay(options)
     rzp.open()
   }
   return (
     <div className="m-10">
-      <div className="flex w-full">
+      {isPremium ? "You are a premium user" : <div className="flex w-full">
         <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
           <h1 className="font-bold text-3xl">Silver Membership</h1>
           <ul>
@@ -63,7 +72,7 @@ function Premium() {
             Buy Gold
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   )
 }
