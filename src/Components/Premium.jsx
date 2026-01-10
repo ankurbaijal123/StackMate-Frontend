@@ -1,15 +1,33 @@
 import React from 'react'
 import axios from "axios"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BASE_URL } from "../utils/constansts";
 function Premium() {
   const [isPremium, setIsPremium] = useState(false)
+
   const verifyPremiumUser = async () => {
-    const res = await axios.get(BASE_URL + "payment/verify", {withCredentials: true})
-    if(res.data.isPremium === true){
-      setIsPremium(true)
+    try {
+      const res = await axios.get(
+        BASE_URL + "/payment/verify",
+        { withCredentials: true }
+      );
+      console.log(res)
+
+      if (res.data.isPremium === true) {
+        setIsPremium(true);
+      }
+      
+    } catch (err) {
+      console.error(err);
     }
-  }
+  };
+
+ useEffect(() => {
+  verifyPremiumUser();
+}, []);
+
+  console.log(isPremium)
+  
   const handlePremiumClick = async (premiumType) => {
     const res = await axios.post(BASE_URL + "/payment/create", {
       type: premiumType
@@ -30,7 +48,7 @@ function Premium() {
         theme: {
           color: '#F37254'
         },
-        handler: verifyPremiumUser()
+        handler:()=> verifyPremiumUser()
       };
       
 
@@ -39,7 +57,7 @@ function Premium() {
   }
   return (
     <div className="m-10">
-      {isPremium ? "You are a premium user" : <div className="flex w-full">
+      {isPremium ? <div className='text-white'>You are a premium user</div> : <div className="flex w-full">
         <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
           <h1 className="font-bold text-3xl">Silver Membership</h1>
           <ul>
