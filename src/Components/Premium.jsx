@@ -57,8 +57,8 @@ function Premium() {
   }
   return (
     <div className="m-10">
-      {isPremium ? <div className='text-white'>You are a premium user</div> : <div className="flex w-full">
-        <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
+      {isPremium ? <div className='text-white'>You are a premium user</div> : <div className="flex flex-col md:flex-row w-full gap-6">
+        <div className="card bg-base-300 rounded-box grid h-auto md:h-80 flex-grow place-items-center p-6">
           <h1 className="font-bold text-3xl">Silver Membership</h1>
           <ul>
             <li> - Chat with other people</li>
@@ -73,8 +73,9 @@ function Premium() {
             Buy Silver
           </button>
         </div>
-        <div className="divider divider-horizontal">OR</div>
-        <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
+        <div className="divider md:divider-horizontal">OR</div>
+        <div className="card bg-base-300 rounded-box grid h-auto md:h-80 flex-grow place-items-center p-6"
+>
           <h1 className="font-bold text-3xl">Gold Membership</h1>
           <ul>
             <li> - Chat with other people</li>
