@@ -40,7 +40,10 @@ const Chat = () => {
         socket.emit("joinChat", { firstName: user.data.firstName, userId, targetUserId })
 
         socket.on("messageReceived", ({ firstName, newMessage, fromUserId, time }) => {
-            setMessages((messages) => [...messages, { firstName, newMessage, fromUserId, time }])
+            setMessages((messages) => [...messages, { firstName, newMessage, fromUserId, time: new Date(time).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                }), }])
         })
 
         return () => {
@@ -53,7 +56,6 @@ const Chat = () => {
         socket.emit("sendMessage", { firstName: user.data.firstName, userId, targetUserId, newMessage, time: new Date() })
         setNewMessage("")
     }
-
 
     return (
         <div className="w-3/4 mx-auto m-5 h-[70vh] flex flex-col rounded-xl border border-gray-600 bg-base-300 shadow-lg">
@@ -87,19 +89,23 @@ const Chat = () => {
             </div>
 
             {/* display input box and send button here */}
-            <div className="p-4 border-t border-gray-600 flex items-center gap-3">
+            <div className="p-4 border-t border-gray-600 flex flex-nowrap items-center gap-3">
                 <input
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     type="text"
                     placeholder="Type a message..."
-                    className="flex-1 rounded-lg border border-gray-500 bg-transparent px-3 py-2 text-base-content focus:outline-none focus:ring-2 focus:ring-primary placeholder:italic"
+                    className="flex-1 min-w-0 rounded-lg border border-gray-500 bg-transparent px-3 py-2"
                 />
-                <button className="btn btn-primary px-6 rounded-xl"
-                    onClick={() => sendMessageFunction()}>
+
+                <button
+                    onClick={sendMessageFunction}
+                    className="btn btn-primary px-6 rounded-xl flex-shrink-0"
+                >
                     Send
                 </button>
             </div>
+
 
         </div>
     );
