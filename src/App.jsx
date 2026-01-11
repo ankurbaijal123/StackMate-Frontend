@@ -14,6 +14,7 @@ import PrivacyPolicy from "./Components/PrivacyPolicy";
 import TC from "./Components/TC";
 import RefundPolicy from "./Components/RefundPolicy";
 import Premium from "./Components/Premium";
+import Chat from "./Components/Chat"
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="terms" element={<TC />} />
           <Route path="refund-policy" element={<RefundPolicy />} />
           <Route path="/premium" element={<Premium />} />
+          <Route path="/chat/:targetUserId" element={<Chat/> } />
           </Route>
         </Routes>
       </BrowserRouter>

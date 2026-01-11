@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constansts";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connections);
@@ -32,28 +33,33 @@ const Connections = () => {
         return (
           <div
             key={_id}
-            className="flex w-full max-w-2xl p-4 mb-4 bg-base-300 shadow-lg rounded-xl border border-base-200"
+            className="flex w-full max-w-2xl p-4 mb-4 bg-base-300 shadow-lg rounded-xl border border-base-200 items-center justify-between"
           >
-            <img
-              alt="profile"
-              className="w-20 h-20 rounded-full object-cover border border-base-200"
-              src={photoUrl}
-            />
-            <div className="ml-4 text-left flex flex-col justify-center text-base-content">
-              <h2 className="font-bold text-xl">
-                {firstName} {lastName}
-              </h2>
-              <p className="text-sm opacity-80">Age: {age}, Gender: {gender}</p>
-              <p className="text-sm mt-1">{about}</p>
+            <div className="flex items-center">
+              <img
+                alt="profile"
+                className="w-20 h-20 rounded-full object-cover border border-base-200"
+                src={photoUrl}
+              />
+              <div className="ml-4 text-left flex flex-col justify-center text-base-content">
+                <h2 className="font-bold text-xl">
+                  {firstName} {lastName}
+                </h2>
+                <p className="text-sm opacity-80">Age: {age}, Gender: {gender}</p>
+                <p className="text-sm mt-1">{about}</p>
+              </div>
             </div>
-            
+            <Link to={"/chat/" + _id}>
+              <button className="bg-blue-600 h-8 rounded-xl w-15 cursor-pointer hover:bg-blue-800">Chat</button>
+            </Link>
+
           </div>
         );
       })}
-    </div>
+    </div >
   );
-  
-  
-    }  
+
+
+}
 
 export default Connections;
